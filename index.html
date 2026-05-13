@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Tráfego Premium para Clínicas Ortodônticas</title>
+    <meta name="description" content="Domine o tráfego da sua clínica agora e receba agendamentos qualificados diariamente com o gestor de tráfego certo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="tech-lines">
+        <div class="line horizontal" style="top: 20%;"></div>
+        <div class="line horizontal" style="top: 80%;"></div>
+        <div class="line vertical" style="left: 10%;"></div>
+        <div class="line vertical" style="left: 90%;"></div>
+        <div class="target-corner top-left"></div>
+        <div class="target-corner top-right"></div>
+        <div class="target-corner bottom-left"></div>
+        <div class="target-corner bottom-right"></div>
+    </div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">@Trafego_J.P</span>
+                <h1 class="main-title">DOMINE O TRÁFEGO DA SUA <span class="highlight">CLÍNICA AGORA</span></h1>
+                <h2 class="sub-title">RECEBA AGENDAMENTOS QUALIFICADOS <strong>DIARIAMENTE</strong></h2>
+                <p class="description">
+                    Chega de perder pacientes para a concorrência.<br>
+                    O gestor de tráfego certo pode mudar tudo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="form-section">
+            <div class="form-container glass-panel">
+                <div class="form-header">
+                    <h3>Descubra se sua clínica está pronta para escalar</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="step-counter" id="step-counter">Etapa 1 de 8</span>
+                </div>
+
+                <form id="qualification-form">
+                    
+                    <!-- Step 1: Contexto Clínico -->
+                    <div class="form-step active" data-step="1">
+                        <label for="clinica-nome">Qual o nome da sua clínica?</label>
+                        <input type="text" id="clinica-nome" placeholder="Ex: Clínica Sorriso Perfeito" required>
+                        
+                        <label for="responsavel-nome">Seu nome e cargo (ex: Dr. João, Sócio/Diretor):</label>
+                        <input type="text" id="responsavel-nome" placeholder="Ex: Dr. João - Sócio" required>
+                        <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                    </div>
+
+                    <!-- Step 2: Desafio e Dor -->
+                    <div class="form-step" data-step="2">
+                        <label for="desafio">Qual é o principal desafio da sua clínica hoje?</label>
+                        <textarea id="desafio" rows="3" placeholder="Ex: Poucos pacientes particulares, agenda vazia..." required></textarea>
+                        
+                        <label for="tentativas">O que você já tentou fazer para resolver esse problema?</label>
+                        <textarea id="tentativas" rows="3" placeholder="Ex: Panfletos, agência que não deu resultado..." required></textarea>
+                        <div class="btn-group">
+                            <button type="button" class="btn-prev">Voltar</button>
+                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Urgência -->
+                    <div class="form-step" data-step="3">
+                        <label>Qual é o nível de urgência para começar e mudar esse cenário?</label>
+                        <div class="radio-group column-group">
+                            <label class="radio-card">
+                                <input type="radio" name="urgencia" value="alta" required>
+                                <div class="card-content">
+                                    <h4>Alta (Para os próximos 30 dias)</h4>
+                                    <p>Preciso resolver isso o mais rápido possível.</p>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="urgencia" value="media">
+                                <div class="card-content">
+                                    <h4>Média (Para os próximos 60 dias)</h4>
+                                    <p>Estou me planejando para iniciar logo.</p>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="urgencia" value="baixa">
+                                <div class="card-content">
+                                    <h4>Baixa (Apenas pesquisando)</h4>
+                                    <p>Não tenho pressa no momento.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn-prev">Voltar</button>
+                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Orçamento -->
+                    <div class="form-step" data-step="4">
+                        <label>Qual faixa de investimento você considera viável para escalar seus resultados?</label>
+                        <div class="radio-group column-group">
+                            <label class="radio-card">
+                                <input type="radio" name="orcamento" value="1000-3000" required>
+                                <div class="card-content">
+                                    <h4>R$ 1.000 a R$ 3.000 / mês</h4>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="orcamento" value="3000-5000">
+                                <div class="card-content">
+                                    <h4>R$ 3.000 a R$ 5.000 / mês</h4>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="orcamento" value="5000+">
+                                <div class="card-content">
+                                    <h4>Acima de R$ 5.000 / mês</h4>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn-prev">Voltar</button>
+                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Processo Comercial -->
+                    <div class="form-step" data-step="5">
+                        <label>Hoje vocês têm equipe comercial ou alguém responsável apenas por conversão e atendimento?</label>
+                        <div class="radio-group row-group">
+                            <label class="radio-card">
+                                <input type="radio" name="comercial" value="sim" required>
+                                <div class="card-content"><h4>Sim, temos equipe dedicada</h4></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="comercial" value="recepcao">
+                                <div class="card-content"><h4>A recepção faz esse papel</h4></div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="comercial" value="nao">
+                                <div class="card-content"><h4>Não temos ainda</h4></div>
+                            </label>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn-prev">Voltar</button>
+                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Decisão -->
+                    <div class="form-step" data-step="6">
+                        <label>Quem participa da decisão de contratar esse tipo de solução na clínica?</label>
+                        <div class="radio-group column-group">
+                            <label class="radio-card">
+                                <input type="radio" name="decisao" value="somente_eu" required>
+                                <div class="card-content">
+                                    <h4>Somente eu</h4>
+                                    <p>Sou o único responsável pela decisão.</p>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="decisao" value="socios">
+                                <div class="card-content">
+                                    <h4>Eu e meus sócios</h4>
+                                    <p>Decidimos em conjunto.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn-prev">Voltar</button>
+                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Visão de Sucesso -->
+                    <div class="form-step" data-step="7">
+                        <label for="sucesso">O que faria este projeto ser considerado um sucesso para você?</label>
+                        <textarea id="sucesso" rows="3" placeholder="Ex: Dobrar o faturamento, encher a agenda de invisalign..." required></textarea>
+                        
+                        <label for="ajuda">Como você acredita que eu posso ajudar sua clínica?</label>
+                        <textarea id="ajuda" rows="3" placeholder="Ex: Trazendo pacientes mais qualificados..." required></textarea>
+                        
+                        <div class="btn-group">
+                            <button type="button" class="btn-prev">Voltar</button>
+                            <button type="button" class="btn-next">Última Etapa <span class="arrow">↗</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 8: Contato -->
+                    <div class="form-step" data-step="8">
+                        <label for="telefone">Qual seu WhatsApp para contato?</label>
+                        <input type="tel" id="telefone" placeholder="(DD) 9XXXX-XXXX" required>
+                        
+                        <label for="email">Qual seu melhor e-mail?</label>
+                        <input type="email" id="email" placeholder="seuemail@clinica.com" required>
+                        
+                        <p class="disclaimer">*Consulte Vagas Limitadas*</p>
+                        <div class="btn-group">
+                            <button type="button" class="btn-prev">Voltar</button>
+                            <button type="submit" class="btn-submit">ENTRE EM CONTATO <span class="arrow">↗</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div class="form-step success-message" id="success-message">
+                        <div class="success-icon">✓</div>
+                        <h3>Informações Enviadas com Sucesso!</h3>
+                        <p>Analisaremos seu perfil e entraremos em contato em breve.</p>
+                        <span class="success-footer">MAIS CLIENTES. MAIS RESULTADOS.</span>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
