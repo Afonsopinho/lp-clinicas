@@ -1,14 +1,14 @@
 :root {
-    --bg-dark: #0a1f15; /* Dark green background */
-    --bg-darker: #06120b;
-    --neon-green: #39ff14; /* Vibrant neon green */
-    --neon-green-dim: rgba(57, 255, 20, 0.2);
-    --gold: #bda061; /* Leather/gold accent */
+    --bg-dark: #071525;       /* Deep dental navy */
+    --bg-darker: #040d18;
+    --neon-green: #00B4FF;    /* Electric dental blue */
+    --neon-green-dim: rgba(0, 180, 255, 0.2);
+    --gold: #60c8ff;          /* Light blue accent */
     --text-main: #ffffff;
-    --text-muted: #a0b2a8;
-    --glass-bg: rgba(10, 31, 21, 0.6);
-    --glass-border: rgba(57, 255, 20, 0.3);
-    
+    --text-muted: #8ab0c8;
+    --glass-bg: rgba(4, 15, 35, 0.65);
+    --glass-border: rgba(0, 180, 255, 0.3);
+
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
@@ -24,12 +24,14 @@ body {
     color: var(--text-main);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow: hidden;   /* sem scroll — layout fixo */
+    height: 100vh;
     position: relative;
 }
 
 /* Background & Overlays */
 .background-grid {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -50,10 +52,28 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: url('assets/bg.png') no-repeat center center;
+    background: url('assets/BG.jpeg_2K_202607172315.jpeg') no-repeat 70% 10%;
     background-size: cover;
-    opacity: 0.3; /* Subtle background image */
+    opacity: 0.38;
     z-index: -3;
+    pointer-events: none;
+}
+
+/* Dark cinematic overlay for contrast */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        to right,
+        rgba(4, 13, 25, 0.70) 0%,
+        rgba(4, 13, 25, 0.38) 55%,
+        rgba(4, 13, 25, 0.05) 100%
+    );
+    z-index: -2;
     pointer-events: none;
 }
 
@@ -70,6 +90,7 @@ body::before {
 .line {
     position: absolute;
     background-color: var(--neon-green-dim);
+    opacity: 0;
 }
 
 .line.horizontal {
@@ -111,10 +132,22 @@ body::before {
 .hero {
     flex: 1;
     min-width: 300px;
+    padding-left: 3.5rem;   /* alinhado com badge e linha do quadro */
     padding-right: 2rem;
+    align-self: stretch; /* fill full container height */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.hero-content {
+    margin-top: 20vh;    /* aligns with top green horizontal line */
 }
 
 .badge {
+    position: fixed;
+    top: 3.2rem;
+    left: 3.2rem;
     display: inline-block;
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.1);
@@ -122,27 +155,30 @@ body::before {
     border-radius: 20px;
     font-size: 0.9rem;
     letter-spacing: 1px;
-    margin-bottom: 2rem;
     backdrop-filter: blur(10px);
+    z-index: 10;
 }
 
 .main-title {
     font-family: var(--font-heading);
-    font-size: 4.5rem;
+    font-size: 3.2rem;  /* 51px — dentro da faixa 50-60px recomendada */
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
 
-.main-title .highlight {
+.main-title .highlight,
+.main-title mark {
     color: var(--neon-green);
     text-shadow: 0 0 20px var(--neon-green-dim);
+    background: none;
+    font-style: normal;
 }
 
 .sub-title {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 1.78rem; /* Golden ratio: description × φ */
     font-weight: 400;
     margin-bottom: 2rem;
     color: var(--text-muted);
@@ -154,15 +190,18 @@ body::before {
 }
 
 .description {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Golden ratio base */
     color: var(--text-muted);
     max-width: 80%;
+    margin-top: auto;
+    margin-bottom: 18vh;
+    padding-top: 1.2rem;
 }
 
 /* Form Section */
 .form-section {
-    flex: 1;
-    min-width: 300px;
+    flex: 0 0 auto;
+    width: 420px;
     display: flex;
     justify-content: center;
 }
@@ -175,7 +214,7 @@ body::before {
     border-radius: 24px;
     padding: 3rem;
     width: 100%;
-    max-width: 600px;
+    max-width: 420px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px var(--neon-green-dim);
     position: relative;
 }
@@ -414,7 +453,7 @@ button {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: rgba(57, 255, 20, 0.1);
+    background: rgba(0, 180, 255, 0.1);
     border: 2px solid var(--neon-green);
     color: var(--neon-green);
     font-size: 3rem;
