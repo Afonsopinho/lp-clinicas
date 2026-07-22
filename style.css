@@ -522,6 +522,12 @@ button {
         overflow-x: hidden !important;
         height: auto !important;
     }
+
+    body::before {
+        background-position: 30% 17%; /* Desloca a imagem para a direita no mobile */
+        transform: scale(1.13);
+        transform-origin: 30% 17%;
+    }
     
     .tech-lines {
         display: none; /* Esconde linhas e cantos no mobile para limpar o visual */
@@ -538,13 +544,13 @@ button {
 
     .hero {
         padding: 0;
-        text-align: center;
-        align-self: center;
+        text-align: left; /* Alinhado à esquerda para não tapar a imagem de fundo */
+        align-self: stretch;
     }
 
     .badge {
-        margin: 0 auto 1.5rem;
-        align-self: center;
+        margin: 0 0 1.5rem 0; /* Alinhado à esquerda */
+        align-self: flex-start;
     }
 
     .main-title {
@@ -557,7 +563,7 @@ button {
     }
 
     .description {
-        max-width: 100%;
+        max-width: 80%;
         margin-top: 1.5rem;
     }
 
