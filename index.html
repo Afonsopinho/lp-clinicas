@@ -8,7 +8,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=5">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1723469352297144'); // Substitua pelo ID do seu Pixel do Meta
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1723469352297144&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
     <div class="background-grid"></div>
@@ -26,15 +44,15 @@
     <main class="container">
         <!-- Hero Section -->
         <section class="hero">
-            <span class="badge">@joaoafonsooficial</span>
             <div class="hero-content">
+                <span class="badge">@joaoafonsooficial</span>
                 <h1 class="main-title">ESCALE SUA<br><span class="highlight">CLÍNICA<br>ODONTOLÓGICA</span><br>COM <mark>TRÁFEGO</mark><br>QUE CONVERTE</h1>
                 <h2 class="sub-title">MAIS PACIENTES.<br>MAIS RECEITA. <strong>AGORA.</strong></h2>
+                <p class="description">
+                    Chega de agenda vazia e depender de indicações.<br>
+                    A estratégia certa pode mudar tudo.
+                </p>
             </div>
-            <p class="description">
-                Chega de agenda vazia e depender de indicações.<br>
-                A estratégia certa pode mudar tudo.
-            </p>
         </section>
 
         <!-- Form Section -->
@@ -57,7 +75,9 @@
                         
                         <label for="responsavel-nome">Seu nome e cargo (ex: Dr. João, Sócio/Diretor):</label>
                         <input type="text" id="responsavel-nome" placeholder="Ex: Dr. João - Sócio" required>
-                        <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                        <div class="btn-group">
+                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
+                        </div>
                     </div>
 
                     <!-- Step 2: Desafio e Dor -->
@@ -101,7 +121,6 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn-prev">Voltar</button>
-                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
                         </div>
                     </div>
 
@@ -130,7 +149,6 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn-prev">Voltar</button>
-                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
                         </div>
                     </div>
 
@@ -153,7 +171,6 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn-prev">Voltar</button>
-                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
                         </div>
                     </div>
 
@@ -178,7 +195,6 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn-prev">Voltar</button>
-                            <button type="button" class="btn-next">Próxima Etapa <span class="arrow">↗</span></button>
                         </div>
                     </div>
 

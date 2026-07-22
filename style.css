@@ -50,10 +50,12 @@ body::before {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url('assets/BG.jpeg_2K_202607172315.jpeg') no-repeat 70% 10%;
+    width: 100%;   /* 100% em vez de 100vw evita offset da scrollbar */
+    height: 100%;
+    background: url('assets/BG.jpeg_2K_202607172315.jpeg') no-repeat 83% 17%;
     background-size: cover;
+    transform: scale(1.13); /* Reduzido em 5% (de 1.18 para 1.13) */
+    transform-origin: 83% 17%; /* Foca o zoom no ponto de alinhamento */
     opacity: 0.38;
     z-index: -3;
     pointer-events: none;
@@ -65,8 +67,8 @@ body::after {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;   /* 100% em vez de 100vw */
+    height: 100%;
     background: linear-gradient(
         to right,
         rgba(4, 13, 25, 0.70) 0%,
@@ -81,8 +83,8 @@ body::after {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;   /* 100% em vez de 100vw */
+    height: 100%;
     z-index: -1;
     pointer-events: none;
 }
@@ -119,36 +121,37 @@ body::after {
 /* Main Layout */
 .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    height: 100vh;
     min-height: 100vh;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 40px; /* Alinha exatamente com os corner markers de 40px */
     gap: 4rem;
-    align-items: center;
+    align-items: stretch;
+    box-sizing: border-box;
 }
 
 /* Hero Section */
 .hero {
     flex: 1;
     min-width: 300px;
-    padding-left: 3.5rem;   /* alinhado com badge e linha do quadro */
-    padding-right: 2rem;
-    align-self: stretch; /* fill full container height */
+    padding: 0;
+    align-self: center; /* Centraliza verticalmente no meio do retângulo */
     display: flex;
     flex-direction: column;
     position: relative;
+    box-sizing: border-box;
 }
 
 .hero-content {
-    margin-top: 20vh;    /* aligns with top green horizontal line */
+    margin-top: 0;
 }
 
 .badge {
-    position: fixed;
-    top: 3.2rem;
-    left: 3.2rem;
     display: inline-block;
+    align-self: flex-start;
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -156,7 +159,7 @@ body::after {
     font-size: 0.9rem;
     letter-spacing: 1px;
     backdrop-filter: blur(10px);
-    z-index: 10;
+    margin-bottom: 2rem;
 }
 
 .main-title {
@@ -190,20 +193,20 @@ body::after {
 }
 
 .description {
-    font-size: 1.1rem; /* Golden ratio base */
+    font-size: 1.1rem;
     color: var(--text-muted);
     max-width: 80%;
-    margin-top: auto;
-    margin-bottom: 18vh;
-    padding-top: 1.2rem;
+    margin-top: 2rem; /* Espaço limpo e fixo abaixo da sub-headline */
 }
 
 /* Form Section */
 .form-section {
-    flex: 0 0 auto;
-    width: 420px;
+    flex: 0 0 540px; /* Largura aumentada para aproveitar o espaço livre */
+    width: 540px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    box-sizing: border-box;
 }
 
 .glass-panel {
@@ -212,11 +215,18 @@ body::after {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    padding: 3rem;
+    padding: 2rem;
     width: 100%;
-    max-width: 420px;
+    max-width: 540px; /* Largura máxima aumentada para 540px */
+    height: calc(100vh - 80px); /* Altura exata travada no retângulo */
+    max-height: calc(100vh - 80px);
     box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px var(--neon-green-dim);
     position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Impede que o conteúdo escape das bordas arredondadas */
 }
 
 .glass-panel::before {
@@ -230,7 +240,7 @@ body::after {
 }
 
 .form-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
 }
 
 .form-header h3 {
@@ -262,6 +272,30 @@ body::after {
     font-weight: 600;
 }
 
+#qualification-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Conteúdo rola internamente se for muito alto */
+    padding-right: 0.5rem; /* Evita que o scrollbar sobreponha os cards */
+}
+
+/* Custom Scrollbar Premium */
+#qualification-form::-webkit-scrollbar {
+    width: 6px;
+}
+#qualification-form::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+#qualification-form::-webkit-scrollbar-thumb {
+    background: var(--neon-green-dim);
+    border-radius: 3px;
+}
+#qualification-form::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-green);
+}
+
 /* Form Elements */
 .form-step {
     display: none;
@@ -269,7 +303,10 @@ body::after {
 }
 
 .form-step.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
 }
 
 @keyframes fadeIn {
@@ -289,14 +326,14 @@ input[type="tel"],
 input[type="email"],
 textarea {
     width: 100%;
-    padding: 1.2rem;
+    padding: 1rem; /* Mais compacto */
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     color: white;
     font-family: var(--font-body);
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     transition: all 0.3s ease;
 }
 
@@ -315,8 +352,8 @@ textarea {
 /* Radio Cards */
 .radio-group {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
 .column-group {
@@ -345,7 +382,7 @@ textarea {
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    padding: 1.2rem;
+    padding: 1rem; /* Mais compacto para economizar espaço vertical */
     transition: all 0.3s ease;
     height: 100%;
 }
@@ -480,35 +517,91 @@ button {
 
 /* Responsive */
 @media (max-width: 992px) {
+    body {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        height: auto !important;
+    }
+    
+    .tech-lines {
+        display: none; /* Esconde linhas e cantos no mobile para limpar o visual */
+    }
+
     .container {
         flex-direction: column;
-        padding: 4rem 2rem;
+        padding: 3rem 1.5rem;
+        height: auto;
+        min-height: 100vh;
+        gap: 3rem;
+        flex-wrap: wrap;
     }
+
+    .hero {
+        padding: 0;
+        text-align: center;
+        align-self: center;
+    }
+
+    .badge {
+        margin: 0 auto 1.5rem;
+        align-self: center;
+    }
+
     .main-title {
-        font-size: 3.5rem;
+        font-size: 2.4rem; /* Reduzido para não quebrar feio no mobile */
     }
+
+    .sub-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
     .description {
         max-width: 100%;
+        margin-top: 1.5rem;
     }
-    .hero {
-        padding-right: 0;
-        text-align: center;
+
+    .form-section {
+        width: 100%;
+        max-width: 100%;
+        flex: 1;
+        justify-content: center;
     }
-    .badge {
-        margin: 0 auto 2rem;
+
+    .glass-panel {
+        max-width: 100%;
+        height: auto !important; /* Altura automática para o formulário rolar com a página */
+        max-height: none;
+        padding: 2rem 1.5rem;
+    }
+
+    #qualification-form {
+        overflow-y: visible; /* Sem scroll interno no mobile, rola a página inteira */
     }
 }
 
 @media (max-width: 576px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
     .main-title {
-        font-size: 2.5rem;
+        font-size: 1.9rem; /* Ideal para telas de celular estreitas */
     }
-    .glass-panel {
-        padding: 2rem 1.5rem;
+
+    .sub-title {
+        font-size: 1.2rem;
     }
+
+    .description {
+        font-size: 1rem;
+    }
+
     .btn-group {
         flex-direction: column;
+        gap: 0.8rem;
     }
+
     .btn-prev, .btn-next, .btn-submit {
         width: 100%;
     }
